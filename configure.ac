@@ -1,4 +1,4 @@
-dnl $Id: configure.in,v 1.9 2005/02/17 15:19:31 erik Exp $
+dnl $Id: configure.ac,v 1.1 2005/03/14 00:27:00 erik Exp $
 AC_INIT(ts.c)
 AM_CONFIG_HEADER(config.h)
 AM_INIT_AUTOMAKE(timestamp, 1.1)
