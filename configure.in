@@ -1,0 +1,11 @@
+dnl $Id: configure.in,v 1.2 2003/02/12 14:16:51 erik Exp $
+AC_INIT(ts.c)
+AM_INIT_AUTOMAKE(timestamp, 0.1)
+
+AC_PROG_CC
+AC_PROG_INSTALL
+AC_ISC_POSIX
+AC_C_CONST
+AC_STDC_HEADERS
+
+AC_OUTPUT(Makefile)
