@@ -1,8 +1,9 @@
 
-# $Id: Makefile.am,v 1.12 2005/02/17 15:19:31 erik Exp $
+# $Id: Makefile.am,v 1.13 2005/03/14 01:02:09 erik Exp $
 
 bin_PROGRAMS=ts
 ts_SOURCES = help.c opt.c stamp.c ts.c
+noinst_HEADERS = help.h opt.h stamp.h
 dist_man_MANS=ts.1
 
 EXTRA_DIST=ChangeLog $(PACKAGE).spec.in
@@ -25,9 +26,10 @@ deb:
 packages: rpm
 
 lint:
-	make -C src lint
+	for file in $(SOURCES) $(HEADERS) ; do splint $(CPPFLAGS) $$file > $$file.lint ; done
+	make lint
 indent:
-	make -C src indent
+	gindent $(SOURCES) $(HEADERS)
 
 docs:
 	doxygen doxygen.conf
