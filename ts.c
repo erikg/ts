@@ -9,7 +9,7 @@ static char const copyright[] =
 
 #ifndef lint
 static const char rcsid[] =
-  "$Id: ts.c,v 1.5 2003/02/15 05:30:14 erik Exp $";
+  "$Id: ts.c,v 1.6 2003/02/15 15:48:52 erik Exp $";
 #endif
 
 #include <stdio.h>
@@ -73,17 +73,30 @@ int main(int argc, char **argv)
 
 	while(read(STDIN_FILENO, &ch, 1)==1)
 	{
+		static int stamplen = 0;
 		if(a==0)
 		{
+			if((char)ch == '\r')
+				continue;
 			time(&tval);
 			lt = *localtime(&tval);
 			strftime(buf, sizeof(buf), format, &lt);
-			write(STDOUT_FILENO, buf, strlen(buf));
+			stamplen = strlen(buf);
+			write(STDOUT_FILENO, buf, stamplen);
 			a=1;
 		}
 		write(STDOUT_FILENO, &ch, 1);
-		if((char)ch=='\n')
+		switch((char)ch)
+		{
+		case '\n':
 			a=0;
+			break;
+		case '\r':
+			write(STDOUT_FILENO, buf, stamplen);
+			break;
+		default:
+			break;
+		}
 	}
 
 	return 0;
