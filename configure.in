@@ -1,4 +1,4 @@
-dnl $Id: configure.in,v 1.8 2004/03/03 14:11:36 erik Exp $
+dnl $Id: configure.in,v 1.9 2005/02/17 15:19:31 erik Exp $
 AC_INIT(ts.c)
 AM_CONFIG_HEADER(config.h)
 AM_INIT_AUTOMAKE(timestamp, 1.1)
@@ -10,13 +10,5 @@ AC_CHECK_HEADERS(stdio.h time.h sys/time.h)
 AC_CHECK_FUNC(setenv,AC_DEFINE(HAVE_SETENV,,UNIX style environment setting))
 AC_CHECK_FUNC(putenv,AC_DEFINE(HAVE_PUTENV,,BSD style environment setting))
 AC_FUNC_STRFTIME
-
-dnl AM_PATH_CHECK(,TEST=test,TEST=)
-TEST=yes
-CHECK_CFLAGS="-I/sw/include"
-CHECK_LIBS="/sw/lib/libcheck.a"
-AC_SUBST(CHECK_CFLAGS)
-AC_SUBST(CHECK_LIBS)
-AC_SUBST(TEST)
 
 AC_OUTPUT(Makefile timestamp.spec doxygen.conf)

@@ -1,11 +1,8 @@
 
-# $Id: Makefile.am,v 1.11 2004/03/03 14:11:36 erik Exp $
+# $Id: Makefile.am,v 1.12 2005/02/17 15:19:31 erik Exp $
 
-bin_PROGRAMS=ts tstest
+bin_PROGRAMS=ts
 ts_SOURCES = help.c opt.c stamp.c ts.c
-tstest_SOURCES =  help.c opt.c stamp.c test.c
-tstest_CFLAGS = @CHECK_CFLAGS@
-tstest_LDADD = @CHECK_LIBS@
 dist_man_MANS=ts.1
 
 EXTRA_DIST=ChangeLog $(PACKAGE).spec.in
@@ -37,7 +34,4 @@ docs:
 	make -C doxygen/latex 
 	dvips -f doxygen/latex/refman.dvi > refman.ps
 	ps2pdf refman.ps
-
-test: tstest
-	./tstest
 
