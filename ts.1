@@ -2,7 +2,7 @@
 .\" http://math.smsu.edu/~erik/software.php?id=
 .\"
 .\"
-.\" $Id: ts.1,v 1.2 2003/02/14 20:11:11 erik Exp $
+.\" $Id: ts.1,v 1.3 2003/02/14 22:14:20 erik Exp $
 .Dd February 14, 2003
 .Dt TS 1
 .Os
@@ -48,6 +48,11 @@ Show the version.
 .Bl -tag -width -indent
 .It TZ
 Set the time zone to use. -u supercedes this.
+.El
+.Sh EXAMPLES
+To, say, see what time each of the stages of a FreeBSD buildworld began
+.Bl -indent
+.B make buildworld | grep '^>' | ts
 .El
 .Sh BUGS
 .Nm
