@@ -2,7 +2,7 @@
 /****************************************************************************\
  * timestamp - time stamp pipe                                               *
  *                                                                           *
- * Copyright (C) 2003-2004 Erik Greenwald <erik@smluc.org>                   *
+ * Copyright (C) 2003-2005 Erik Greenwald <erik@smluc.org>                   *
  * All Rights Reserved.                                                      *
  *                                                                           *
  * Redistribution and use in source and binary forms, with or without        *
@@ -31,11 +31,11 @@
  \***************************************************************************/
 
 /*
- * $Id: opt.c,v 1.1 2004/03/03 14:13:18 erik Exp $
+ * $Id: opt.c,v 1.2 2005/03/14 00:24:14 erik Exp $
  */
 
 #ifndef lint
-static const char rcsid[] = "$Id: opt.c,v 1.1 2004/03/03 14:13:18 erik Exp $";
+static const char rcsid[] = "$Id: opt.c,v 1.2 2005/03/14 00:24:14 erik Exp $";
 #endif
 
 #ifdef HAVE_CONFIG_H
