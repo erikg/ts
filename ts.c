@@ -9,7 +9,7 @@ static char const copyright[] =
 
 #ifndef lint
 static const char rcsid[] =
-  "$Id: ts.c,v 1.4 2003/02/14 18:52:23 erik Exp $";
+  "$Id: ts.c,v 1.5 2003/02/15 05:30:14 erik Exp $";
 #endif
 
 #include <stdio.h>
@@ -44,7 +44,14 @@ int main(int argc, char **argv)
 		switch(ch)
 		{
 			case 'u':
+#if defined(HAVE_SETENV)
 				setenv("TZ", "UTC0", 1);
+#elif defined(HAVE_PUTENV)
+				putenv("TZ=UTC");
+#else
+				printf("No support for setting env TZ=UTC. Aborting\n");
+				exit(EXIT_FAILURE);
+#endif
 				break;
 			case 'h':
 				usage(stdout, argv[0]);
