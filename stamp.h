@@ -2,7 +2,8 @@
 /****************************************************************************\
  * timestamp - time stamp pipe                                               *
  *                                                                           *
- * Copyright (C) 2003 Erik Greenwald <erik@smluc.org> All Rights Reserved.   *
+ * Copyright (C) 2003-2004 Erik Greenwald <erik@smluc.org>                   *
+ * All Rights Reserved.                                                      *
  *                                                                           *
  * Redistribution and use in source and binary forms, with or without        *
  * modification, are permitted provided that the following conditions are    *
@@ -27,32 +28,15 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF  *
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.         *
  *                                                                           *
- * $Id: ts.c,v 1.10 2004/03/03 14:13:18 erik Exp $
- *                                                                           *
  \***************************************************************************/
 
-#ifndef lint
-static const char rcsid[] = "$Id: ts.c,v 1.10 2004/03/03 14:13:18 erik Exp $";
-#endif
-
-#include <stdlib.h>
-
-#include "opt.h"
-#include "stamp.h"
-
-/**
- * Entry point for timestamp.
- * @param argc Number of arguments.
- * @param argv Argument vector.
- * @return Exit status.
+/*
+ * $Id: stamp.h,v 1.1 2004/03/03 14:13:18 erik Exp $
  */
-int
-main (int argc, char **argv)
-{
-    char *format;
 
-    format = parse_opts (argc, argv);
-    stamp (format);
+#ifndef TS_STAMP_H
+#define TS_STAMP_H
 
-    return EXIT_SUCCESS;
-}
+int stamp (char *format);
+
+#endif

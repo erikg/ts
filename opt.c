@@ -2,7 +2,8 @@
 /****************************************************************************\
  * timestamp - time stamp pipe                                               *
  *                                                                           *
- * Copyright (C) 2003 Erik Greenwald <erik@smluc.org> All Rights Reserved.   *
+ * Copyright (C) 2003-2004 Erik Greenwald <erik@smluc.org>                   *
+ * All Rights Reserved.                                                      *
  *                                                                           *
  * Redistribution and use in source and binary forms, with or without        *
  * modification, are permitted provided that the following conditions are    *
@@ -27,32 +28,72 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF  *
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.         *
  *                                                                           *
- * $Id: ts.c,v 1.10 2004/03/03 14:13:18 erik Exp $
- *                                                                           *
  \***************************************************************************/
 
+/*
+ * $Id: opt.c,v 1.1 2004/03/03 14:13:18 erik Exp $
+ */
+
 #ifndef lint
-static const char rcsid[] = "$Id: ts.c,v 1.10 2004/03/03 14:13:18 erik Exp $";
+static const char rcsid[] = "$Id: opt.c,v 1.1 2004/03/03 14:13:18 erik Exp $";
 #endif
 
-#include <stdlib.h>
+#ifdef HAVE_CONFIG_H
+# include "config.h"
+#endif
 
-#include "opt.h"
-#include "stamp.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <time.h>
+#include <sys/time.h>
+
+#include "help.h"
 
 /**
- * Entry point for timestamp.
+ * Parse the command line parameters.
  * @param argc Number of arguments.
- * @param argv Argument vector.
- * @return Exit status.
+ * @param argv The argument vector.
+ * @return The date format.
  */
-int
-main (int argc, char **argv)
+char *
+parse_opts (int argc, char **argv)
 {
     char *format;
+    int ch = 0;
 
-    format = parse_opts (argc, argv);
-    stamp (format);
+    format = "%Y%m%d%H%M%S: ";
+    while ((ch = getopt (argc, argv, "uvh")) != -1)
+	switch (ch)
+	  {
+	  case 'u':
+#if defined(HAVE_SETENV)
+	      setenv ("TZ", "UTC0", 1);
+#elif defined(HAVE_PUTENV)
+	      putenv ("TZ=UTC");
+#else
+	      printf ("No support for setting env TZ=UTC. Aborting\n");
+	      exit (EXIT_FAILURE);
+#endif
+	      break;
+	  case 'h':
+	      usage (stdout, argv[0]);
+	      exit (EXIT_SUCCESS);
+	  case 'v':
+	      version (stdout, argv[0]);
+	      exit (EXIT_SUCCESS);
+	  default:
+	      usage (stderr, argv[0]);
+	      exit (EXIT_FAILURE);
+	  }
+    argc -= optind;
+    argv += optind;
 
-    return EXIT_SUCCESS;
+    if (*argv && **argv == '+')
+      {
+	  format = *argv + 1;
+	  ++argv;
+      }
+    return format;
 }

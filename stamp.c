@@ -2,7 +2,8 @@
 /****************************************************************************\
  * timestamp - time stamp pipe                                               *
  *                                                                           *
- * Copyright (C) 2003 Erik Greenwald <erik@smluc.org> All Rights Reserved.   *
+ * Copyright (C) 2003-2004 Erik Greenwald <erik@smluc.org>                   *
+ * All Rights Reserved.                                                      *
  *                                                                           *
  * Redistribution and use in source and binary forms, with or without        *
  * modification, are permitted provided that the following conditions are    *
@@ -27,32 +28,66 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF  *
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.         *
  *                                                                           *
- * $Id: ts.c,v 1.10 2004/03/03 14:13:18 erik Exp $
- *                                                                           *
  \***************************************************************************/
 
+/*
+ * $Id: stamp.c,v 1.1 2004/03/03 14:13:18 erik Exp $
+ */
+
 #ifndef lint
-static const char rcsid[] = "$Id: ts.c,v 1.10 2004/03/03 14:13:18 erik Exp $";
+static const char rcsid[] = "$Id: stamp.c,v 1.1 2004/03/03 14:13:18 erik Exp $";
 #endif
 
+#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <time.h>
+#include <sys/time.h>
 
-#include "opt.h"
-#include "stamp.h"
+#include "config.h"
 
 /**
- * Entry point for timestamp.
- * @param argc Number of arguments.
- * @param argv Argument vector.
- * @return Exit status.
+ * Do the pipe operation. Time is taken on the first character of a line.
+ * Carraige returns are ignored. Input is taken from stdin and sent to stdout.
+ * @param format The date format to use.
+ * @return Always 0.
  */
 int
-main (int argc, char **argv)
+stamp (char *format)
 {
-    char *format;
+    char buf[1024];
+    char c = 0, a = 0;
+    struct tm lt;
+    time_t tval;
 
-    format = parse_opts (argc, argv);
-    stamp (format);
+    while (read (STDIN_FILENO, &c, 1) == 1)
+      {
+	  static int stamplen = 0;
 
-    return EXIT_SUCCESS;
+	  if (a == 0)
+	    {
+		if (c == '\r')
+		    continue;
+		time (&tval);
+		lt = *localtime (&tval);
+		strftime (buf, sizeof (buf), format, &lt);
+		stamplen = strlen (buf);
+		write (STDOUT_FILENO, buf, stamplen);
+		a = 1;
+	    }
+	  write (STDOUT_FILENO, &c, 1);
+	  switch (c)
+	    {
+	    case '\n':
+		a = 0;
+		break;
+	    case '\r':
+		write (STDOUT_FILENO, buf, stamplen);
+		break;
+	    default:
+		break;
+	    }
+      }
+    return 0;
 }

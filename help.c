@@ -2,7 +2,8 @@
 /****************************************************************************\
  * timestamp - time stamp pipe                                               *
  *                                                                           *
- * Copyright (C) 2003 Erik Greenwald <erik@smluc.org> All Rights Reserved.   *
+ * Copyright (C) 2003-2004 Erik Greenwald <erik@smluc.org>                   *
+ * All Rights Reserved.                                                      *
  *                                                                           *
  * Redistribution and use in source and binary forms, with or without        *
  * modification, are permitted provided that the following conditions are    *
@@ -27,32 +28,52 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF  *
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.         *
  *                                                                           *
- * $Id: ts.c,v 1.10 2004/03/03 14:13:18 erik Exp $
- *                                                                           *
  \***************************************************************************/
 
-#ifndef lint
-static const char rcsid[] = "$Id: ts.c,v 1.10 2004/03/03 14:13:18 erik Exp $";
-#endif
+/*
+ * $Id: help.c,v 1.1 2004/03/03 14:13:18 erik Exp $
+ */
 
+static char const copyright[] =
+    "Copyright (c) 2003-2004 Erik Greenwald <erik@smluc.org>.  All rights reserved.\n";
+static const char rcsid[] = "$Id: help.c,v 1.1 2004/03/03 14:13:18 erik Exp $";
+
+#include <stdio.h>
 #include <stdlib.h>
-
-#include "opt.h"
-#include "stamp.h"
+#include "config.h"
 
 /**
- * Entry point for timestamp.
- * @param argc Number of arguments.
- * @param argv Argument vector.
- * @return Exit status.
+ * Display the version of this program.
+ * @param f File stream to print to.
+ * @param name Called name of the program.
  */
-int
-main (int argc, char **argv)
+void
+version (FILE * f, char *name)
 {
-    char *format;
+    int retval;
 
-    format = parse_opts (argc, argv);
-    stamp (format);
+    retval =
+	fprintf (f,
+		 "%s (" PACKAGE ") " VERSION " %s\n%s\n",
+		 name, copyright, rcsid);
+    if (retval < 0)
+	exit (-2);
+    return;
+}
 
-    return EXIT_SUCCESS;
+/**
+ * Display the usage information for this program.
+ * @param f File stream to print to.
+ * @param name Called name of the program.
+ */
+void
+usage (FILE * f, char *name)
+{
+    int retval;
+
+    version (f, name);
+    retval = fprintf (f, "Usage:\n\t%s [-u] [-v|-h] [+val[ymwdHMS]]\n", name);
+    if (retval < 0)
+	exit (-2);
+    return;
 }
