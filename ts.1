@@ -1,0 +1,57 @@
+.\" ts.1 man page for timestamp
+.\" http://math.smsu.edu/~erik/software.php?id=
+.\"
+.\"
+.\" $Id: ts.1,v 1.1 2003/02/14 19:49:08 erik Exp $
+.Dd February 14, 2003
+.Dt TS 1
+.Os
+.Sh NAME
+.Nm ts
+.Nd timestamp
+.Sh SYNOPSIS
+.Nm
+.Op Fl uvh
+.Op Cm + Ns Ar format
+.Sh DESCRIPTION
+Read stdin, timestamp lines, output to stdout. The timestamp format can be set
+in the same fashion as 'date' output, and can be set for timezone using the
+.Cm TZ
+variable, or UTC using the
+.Op Fl u
+flag. The timestamp for the line is set when the first character of that line
+is recieved.
+.Pp
+The
+.Op Cm + Ns Ar format
+string is the same syntax as used in the
+.Xr date 1
+program and the
+.Xr srftime 3
+library call. If no format string is defined, 
+.Nm
+will default to
+.Tp
+.Ns '+%Y%m%d%M%H%S: '
+to provide a sort and cut friendly time stamp.
+.Sh OPTIONS
+.Bl -tag -width -indent
+.It Fl u
+Use UTC as the timezone instead of the TZ environment variable or the
+/etc/localtime file.
+.It Fl h
+Show the help screen.
+.It Fl v
+Show the version.
+.Sh ENVIRONMENT
+.Bl -tag -width -indent
+.It TZ
+Set the time zone to use. -u supercedes this.
+.Sh BUGS
+.Nm
+has no known bugs. Please report any found to <erik@smluc.org>
+.Sh AUTHOR
+Erik Greenwald <erik at smluc dot org>
+.Sh SEE ALSO
+.Xr date 1 ,
+.Xr strftime 3
