@@ -31,12 +31,12 @@
  \***************************************************************************/
 
 /*
- * $Id: help.c,v 1.1 2004/03/03 14:13:18 erik Exp $
+ * $Id: help.c,v 1.2 2005/02/17 15:19:21 erik Exp $
  */
 
 static char const copyright[] =
     "Copyright (c) 2003-2004 Erik Greenwald <erik@smluc.org>.  All rights reserved.\n";
-static const char rcsid[] = "$Id: help.c,v 1.1 2004/03/03 14:13:18 erik Exp $";
+static const char rcsid[] = "$Id: help.c,v 1.2 2005/02/17 15:19:21 erik Exp $";
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -54,8 +54,8 @@ version (FILE * f, char *name)
 
     retval =
 	fprintf (f,
-		 "%s (" PACKAGE ") " VERSION " %s\n%s\n",
-		 name, copyright, rcsid);
+		 "%s (" PACKAGE ") " VERSION " %s\n",
+		 name, copyright);
     if (retval < 0)
 	exit (-2);
     return;
