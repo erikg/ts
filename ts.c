@@ -9,7 +9,7 @@ static char const copyright[] =
 
 #ifndef lint
 static const char rcsid[] =
-  "$Id: ts.c,v 1.2 2003/02/14 18:16:15 erik Exp $";
+  "$Id: ts.c,v 1.3 2003/02/14 18:50:39 erik Exp $";
 #endif
 
 #include <stdio.h>
@@ -19,7 +19,7 @@ static const char rcsid[] =
 
 void version(FILE *f, char *name)
 {
-	fprintf(f,"%s (%s) %s  (C) 2003 Erik Greenwald <erik@smluc.org>", name, PACKAGE, VERSION);
+	fprintf(f,"%s (%s) %s  (C) 2003 Erik Greenwald <erik@smluc.org>\n %s\n", name, PACKAGE, VERSION, rcsid);
 	return;	
 }
 
