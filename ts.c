@@ -9,17 +9,24 @@ static char const copyright[] =
 
 #ifndef lint
 static const char rcsid[] =
-  "$Id: ts.c,v 1.1 2003/02/12 14:58:24 erik Exp $";
+  "$Id: ts.c,v 1.2 2003/02/14 18:16:15 erik Exp $";
 #endif
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <sys/time.h>
 
-void usage(void)
+void version(FILE *f, char *name)
 {
-	fprintf(stderr, "%s\n",
-		"usage: ts [u] [+val[ymwdHMS]] ...");
+	fprintf(f,"%s (%s) %s  (C) 2003 Erik Greenwald <erik@smluc.org>", name, PACKAGE, VERSION);
+	return;	
+}
+
+void usage(FILE *f,char *name)
+{
+	version(f,name);
+	fprintf(f,"Usage:\n\t%s [-u] [-v|-h] [+val[ymwdHMS]]\n", name);
 	return;
 }
 
@@ -32,13 +39,21 @@ int main(int argc, char **argv)
 	
 	format="%Y%m%d%H%M%S: ";
 
-	while((ch=getopt(argc, argv, "u"))!=-1)
+	while((ch=getopt(argc, argv, "uvh"))!=-1)
 		switch(ch)
 		{
 			case 'u':
 				setenv("TZ", "UTC0", 1);
+				break;
+			case 'h':
+				usage(stdout, argv[0]);
+				return EXIT_SUCCESS;
+			case 'v':
+				version(stdout, argv[0]);
+				return EXIT_SUCCESS;
 			default:
-				usage();
+				usage(stderr,argv[0]);
+				return EXIT_FAILURE;
 		}
 	argc -= optind;
 	argv += optind;
