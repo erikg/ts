@@ -9,6 +9,8 @@
 20040116:
 	* Auto-generated RPM spec file.
 
+20040114:
+	* Use of config.h
 
 20030215 (Feb 15, 2003):
 	* Version 1.0 released.
