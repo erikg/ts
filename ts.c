@@ -27,7 +27,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF  *
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.         *
  *                                                                           *
- * $Id: ts.c,v 1.8 2003/02/15 16:15:35 erik Exp $
+ * $Id: ts.c,v 1.9 2004/01/14 13:05:29 erik Exp $
  *                                                                           *
  \***************************************************************************/
 
@@ -39,31 +39,40 @@ static char const copyright[] =
 
 #ifndef lint
 static const char rcsid[] =
-  "$Id: ts.c,v 1.8 2003/02/15 16:15:35 erik Exp $";
+  "$Id: ts.c,v 1.9 2004/01/14 13:05:29 erik Exp $";
 #endif
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #include <time.h>
 #include <sys/time.h>
 
+#include "config.h"
+
 void version(FILE *f, char *name)
 {
-	fprintf(f,"%s (%s) %s  (C) 2003 Erik Greenwald <erik@smluc.org>\n %s\n", name, PACKAGE, VERSION, rcsid);
+	int retval;
+	retval = fprintf(f,"%s (%s) %s  (C) 2003 Erik Greenwald <erik@smluc.org>\n %s\n", name, PACKAGE, VERSION, rcsid);
+	if(retval < 0)
+		exit(-2);
 	return;	
 }
 
 void usage(FILE *f,char *name)
 {
+	int retval;
 	version(f,name);
-	fprintf(f,"Usage:\n\t%s [-u] [-v|-h] [+val[ymwdHMS]]\n", name);
+	retval = fprintf(f,"Usage:\n\t%s [-u] [-v|-h] [+val[ymwdHMS]]\n", name);
+	if(retval < 0)
+		exit(-2);
 	return;
 }
 
 int main(int argc, char **argv)
 {
-	int ch=0, utc=0, a=0;
+	int ch=0, a=0;
 	char buf[1024], *format, c;
 	struct tm lt;
 	time_t tval;
