@@ -1,4 +1,8 @@
 
+	* Auto-generated RPM spec file and doxygen conf file.
+	* Split in to multiple source files.
+
+
 20030215 (Feb 15, 2003)
 	* Version 1.0 released.
 	
