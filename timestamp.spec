@@ -4,7 +4,7 @@ Version: 1.0
 Release: 1
 Copyright: BSD
 Vendor: Erik Greenwald
-Url: http://math.smsu.edu/~erik/software.php?
+Url: http://math.smsu.edu/~erik/software.php?id=95
 Group: Applications/Text
 Source0: http://math.smsu.edu/~erik/files/timestamp-1.0.tar.gz
 Buildroot: /var/tmp/ts
