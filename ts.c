@@ -9,12 +9,13 @@ static char const copyright[] =
 
 #ifndef lint
 static const char rcsid[] =
-  "$Id: ts.c,v 1.3 2003/02/14 18:50:39 erik Exp $";
+  "$Id: ts.c,v 1.4 2003/02/14 18:52:23 erik Exp $";
 #endif
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <time.h>
 #include <sys/time.h>
 
 void version(FILE *f, char *name)
