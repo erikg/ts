@@ -2,17 +2,20 @@
 .\" http://math.smsu.edu/~erik/software.php?id=95
 .\"
 .\"
-.\" $Id: ts.1,v 1.4 2003/02/15 05:34:49 erik Exp $
+.\" $Id: ts.1,v 1.5 2003/02/15 15:08:59 erik Exp $
 .Dd February 14, 2003
 .Dt TS 1
 .Os
+.\"===========================================================================
 .Sh NAME
 .Nm ts
 .Nd timestamp
+.\"===========================================================================
 .Sh SYNOPSIS
 .Nm
 .Op Fl uvh
 .Op Cm + Ns Ar format
+.\"===========================================================================
 .Sh DESCRIPTION
 Read stdin, timestamp lines, output to stdout. The timestamp format can be set
 in the same fashion as 'date' output, and can be set for timezone using the
@@ -34,6 +37,7 @@ will default to
 .Tp
 .Ns '+%Y%m%d%M%H%S: '
 to provide a sort and cut friendly time stamp.
+.\"===========================================================================
 .Sh OPTIONS
 .Bl -tag -width -indent
 .It Fl u
@@ -44,21 +48,27 @@ Show the help screen.
 .It Fl v
 Show the version.
 .El
+.\"===========================================================================
 .Sh ENVIRONMENT
-.Bl -tag -width -indent
-.It TZ
-Set the time zone to use. -u supercedes this.
-.El
+.Ev TZ Set the time zone to use. -u supercedes this.
+.\"===========================================================================
 .Sh EXAMPLES
 To, say, see what time each of the stages of a FreeBSD buildworld began
-.Bl -indent
-.B make buildworld | grep '^>' | ts
-.El
-.Sh BUGS
-.Nm
-has no known bugs. Please report any found to <erik@smluc.org>
-.Sh AUTHOR
-Erik Greenwald <erik at smluc dot org>
+.Dl $ make buildworld | grep '^>' | ts
+Building a transaction log of events might be something similar to
+.Dl $ cat | ts '+%h %d, %Y  %H:%M:%S> ' | tee thing.log
+.\"===========================================================================
+.Sh DIAGNOSTICS
+.Ex -std
+.\"===========================================================================
 .Sh SEE ALSO
 .Xr date 1 ,
 .Xr strftime 3
+.\"===========================================================================
+.Sh AUTHOR
+.An "Erik Greenwald" Aq erik@smluc.org
+.\"===========================================================================
+.Sh BUGS
+.Nm
+has no known bugs. Please report any found to
+.Aq erik@smluc.org
