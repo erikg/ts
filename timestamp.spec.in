@@ -7,7 +7,7 @@ Vendor: Erik Greenwald
 Url: http://math.smsu.edu/~erik/software.php?id=95
 Group: Applications/Text
 Source0: http://math.smsu.edu/~erik/files/@PACKAGE@-@VERSION@.tar.gz
-Buildroot: /var/tmp/ts
+Buildroot: /var/tmp/@PACKAGE@
 
 %description
 Read stdin, timestamp lines, output to stdout. The timestamp format
