@@ -1,8 +1,15 @@
+20050318:
+	* Version 1.1 released.
+	* Minor cleanup.
 
-	* Auto-generated RPM spec file and doxygen conf file.
+20040303:
 	* Split in to multiple source files.
+	* Doxygen shtuff.
+
+20040116:
+	* Auto-generated RPM spec file.
 
 
-20030215 (Feb 15, 2003)
+20030215 (Feb 15, 2003):
 	* Version 1.0 released.
 	
