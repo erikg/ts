@@ -1,4 +1,4 @@
-dnl $Id: configure.in,v 1.5 2004/01/14 13:04:45 erik Exp $
+dnl $Id: configure.in,v 1.6 2004/01/16 16:11:14 erik Exp $
 AC_INIT(ts.c)
 AM_CONFIG_HEADER(config.h)
 AM_INIT_AUTOMAKE(timestamp, 1.0)
@@ -11,4 +11,4 @@ AC_CHECK_FUNC(setenv,AC_DEFINE(HAVE_SETENV,,UNIX style environment setting))
 AC_CHECK_FUNC(putenv,AC_DEFINE(HAVE_PUTENV,,BSD style environment setting))
 AC_FUNC_STRFTIME
 
-AC_OUTPUT(Makefile)
+AC_OUTPUT(Makefile timestamp.spec)
