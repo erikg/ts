@@ -1,12 +1,12 @@
 
-# $Id: Makefile.am,v 1.13 2005/03/14 01:02:09 erik Exp $
+# $Id: Makefile.am,v 1.14 2005/03/18 16:52:50 erik Exp $
 
 bin_PROGRAMS=ts
 ts_SOURCES = help.c opt.c stamp.c ts.c
 noinst_HEADERS = help.h opt.h stamp.h
 dist_man_MANS=ts.1
 
-EXTRA_DIST=ChangeLog $(PACKAGE).spec.in
+EXTRA_DIST=ChangeLog $(PACKAGE).spec.in install-sh
 
 .PHONY : rpm
 rpm: dist
