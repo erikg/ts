@@ -27,14 +27,15 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF  *
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.         *
  *                                                                           *
- * $Id: ts.c,v 1.10 2004/03/03 14:13:18 erik Exp $
+ * $Id: ts.c,v 1.11 2007/09/04 22:41:12 erik Exp $
  *                                                                           *
  \***************************************************************************/
 
 #ifndef lint
-static const char rcsid[] = "$Id: ts.c,v 1.10 2004/03/03 14:13:18 erik Exp $";
+static const char rcsid[] = "$Id: ts.c,v 1.11 2007/09/04 22:41:12 erik Exp $";
 #endif
 
+#include <stdio.h>
 #include <stdlib.h>
 
 #include "opt.h"
@@ -52,7 +53,10 @@ main (int argc, char **argv)
     char *format;
 
     format = parse_opts (argc, argv);
-    stamp (format);
+    if(stamp (format) > 0) {
+	fprintf(stderr,"Error timestamping\n");
+	return EXIT_FAILURE;
+    }
 
     return EXIT_SUCCESS;
 }
