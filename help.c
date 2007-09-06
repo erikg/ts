@@ -31,12 +31,12 @@
  \***************************************************************************/
 
 /*
- * $Id: help.c,v 1.3 2005/03/14 00:24:14 erik Exp $
+ * $Id: help.c,v 1.4 2007/09/06 13:59:17 erik Exp $
  */
 
 static char const copyright[] =
     "Copyright (c) 2003-2005 Erik Greenwald <erik@smluc.org>.  All rights reserved.\n";
-static const char rcsid[] = "$Id: help.c,v 1.3 2005/03/14 00:24:14 erik Exp $";
+static const char rcsid[] = "$Id: help.c,v 1.4 2007/09/06 13:59:17 erik Exp $";
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -57,7 +57,7 @@ version (FILE * f, char *name)
 		 "%s (" PACKAGE ") " VERSION " %s\n",
 		 name, copyright);
     if (retval < 0)
-	exit (-2);
+	exit (EXIT_FAILURE);
     return;
 }
 
@@ -74,6 +74,6 @@ usage (FILE * f, char *name)
     version (f, name);
     retval = fprintf (f, "Usage:\n\t%s [-u] [-v|-h] [+val[ymwdHMS]]\n", name);
     if (retval < 0)
-	exit (-2);
+	exit (EXIT_FAILURE);
     return;
 }
