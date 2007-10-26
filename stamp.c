@@ -31,7 +31,7 @@
  \***************************************************************************/
 
 /*
- * $Id: stamp.c,v 1.12 2007/10/26 22:03:06 erik Exp $
+ * $Id: stamp.c,v 1.13 2007/10/26 23:39:37 erik Exp $
  */
 
 #ifdef HAVE_CONFIG_H
@@ -57,7 +57,7 @@ stamp(const char *format)
 {
 	char buf[BUFSIZ];
 	char c = '\0', a = '\0';
-	struct tm lt;
+	struct tm *lt;
 	time_t tval;
 
 	while (read(STDIN_FILENO, &c, 1) == 1) {
@@ -71,8 +71,8 @@ stamp(const char *format)
 				perror("Unable to get time");
 				exit(EXIT_FAILURE);
 			}
-			lt = *localtime(&tval);
-			stamplen = strftime(buf, sizeof(buf), format, &lt);
+			lt = localtime(&tval);
+			stamplen = strftime(buf, sizeof(buf), format, lt);
 			if ((size_t) write(STDOUT_FILENO, buf,
 				stamplen) != stamplen) {
 				perror("write");
