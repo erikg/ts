@@ -31,11 +31,11 @@
  \***************************************************************************/
 
 /*
- * $Id: stamp.c,v 1.4 2007/10/26 04:52:17 erik Exp $
+ * $Id: stamp.c,v 1.5 2007/10/26 05:58:01 erik Exp $
  */
 
 #ifndef lint
-static const char rcsid[] = "$Id: stamp.c,v 1.4 2007/10/26 04:52:17 erik Exp $";
+static const char rcsid[] = "$Id: stamp.c,v 1.5 2007/10/26 05:58:01 erik Exp $";
 #endif
 
 #include <stdio.h>
@@ -57,7 +57,7 @@ int
 stamp (char *format)
 {
     char buf[BUFSIZ];
-    char c = 0, a = 0;
+    char c = '\0', a = '\0';
     struct tm lt;
     time_t tval;
 
@@ -65,25 +65,36 @@ stamp (char *format)
       {
 	  static int stamplen = 0;
 
-	  if (a == 0)
+	  if (a == '\0')
 	    {
 		if (c == '\r')
 		    continue;
-		time (&tval);
+		if(time (&tval) == 0) {
+		    perror("Unable to get time");
+		    exit(EXIT_FAILURE);
+		}
 		lt = *localtime (&tval);
 		strftime (buf, sizeof (buf), format, &lt);
 		stamplen = strlen (buf);
 		write (STDOUT_FILENO, buf, stamplen);
 		a = 1;
-	    }
-	  write (STDOUT_FILENO, &c, 1);
+	}
+
+	  if( write (STDOUT_FILENO, &c, 1) != 1 ) {
+	      perror("write");
+	      exit(EXIT_FAILURE);
+	  }
+
 	  switch (c)
 	    {
 	    case '\n':
 		a = 0;
 		break;
 	    case '\r':
-		write (STDOUT_FILENO, buf, stamplen);
+		if( write (STDOUT_FILENO, buf, stamplen) != stamplen ) {
+		  perror("write");
+		  exit(EXIT_FAILURE);
+		}
 		break;
 	    default:
 		break;
