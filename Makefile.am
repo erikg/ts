@@ -29,7 +29,7 @@
 # *                                                                           *
 # \***************************************************************************/
 #
-# $Id: Makefile.am,v 1.19 2007/10/26 21:32:10 erik Exp $
+# $Id: Makefile.am,v 1.20 2007/10/26 23:46:38 erik Exp $
 
 bin_PROGRAMS=ts
 ts_SOURCES = help.c opt.c stamp.c ts.c
@@ -64,7 +64,7 @@ indent:
 flawfinder:
 	flawfinder $(SOURCES) $(HEADERS)
 
-docs:
+doc docs doxygen refman.ps refman.pdf:
 	doxygen doxygen.conf
 	make -C doxygen/latex 
 	dvips -f doxygen/latex/refman.dvi > refman.ps
