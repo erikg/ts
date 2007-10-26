@@ -31,8 +31,12 @@
  \***************************************************************************/
 
 /*
- * $Id: stamp.c,v 1.11 2007/10/26 21:29:42 erik Exp $
+ * $Id: stamp.c,v 1.12 2007/10/26 22:03:06 erik Exp $
  */
+
+#ifdef HAVE_CONFIG_H
+# include "config.h"
+#endif
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -40,7 +44,7 @@
 #include <unistd.h>
 #include <time.h>
 
-#include "config.h"
+#include "stamp.h"
 
 /**
  * Do the pipe operation. Time is taken on the first character of a line.
@@ -63,6 +67,7 @@ stamp(const char *format)
 			if (c == '\r')
 				continue;
 			if (time(&tval) == 0) {
+				/* time might not set an errno, ... */
 				perror("Unable to get time");
 				exit(EXIT_FAILURE);
 			}
