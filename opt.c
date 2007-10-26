@@ -31,11 +31,11 @@
  \***************************************************************************/
 
 /*
- * $Id: opt.c,v 1.4 2007/10/26 06:04:54 erik Exp $
+ * $Id: opt.c,v 1.5 2007/10/26 06:16:58 erik Exp $
  */
 
 #ifndef lint
-static const char rcsid[] = "$Id: opt.c,v 1.4 2007/10/26 06:04:54 erik Exp $";
+/*@unused@*/static const char rcsid[] = "$Id: opt.c,v 1.5 2007/10/26 06:16:58 erik Exp $";
 #endif
 
 #ifdef HAVE_CONFIG_H
@@ -51,33 +51,34 @@ static const char rcsid[] = "$Id: opt.c,v 1.4 2007/10/26 06:04:54 erik Exp $";
 
 #include "help.h"
 
-char default_format[] = "%Y%m%d%H%M%S: ";
+static char default_format[] = "%Y%m%d%H%M%S: ";
+
 /**
  * Parse the command line parameters.
  * @param argc Number of arguments.
  * @param argv The argument vector.
  * @return The date format.
  */
-char *
+const char *
 parse_opts (int argc, char **argv)
 {
-    char *format;
+    char *format = default_format;
     int ch = 0;
 
-    format = default_format;
     while ((ch = getopt (argc, argv, "uvh")) != -1)
 	switch (ch)
 	  {
 	  case 'u':
 #if defined(HAVE_SETENV)
 	      setenv ("TZ", "UTC0", 1);
+	      break;
 #elif defined(HAVE_PUTENV)
 	      putenv ("TZ=UTC");
+	      break;
 #else
 	      printf ("No support for setting env TZ=UTC. Aborting\n");
 	      exit (EXIT_FAILURE);
 #endif
-	      break;
 	  case 'h':
 	      usage (stdout, argv[0]);
 	      exit (EXIT_SUCCESS);
@@ -93,5 +94,6 @@ parse_opts (int argc, char **argv)
 
     if (*argv != NULL && **argv == '+')
 	  format = *++argv;
+
     return format;
 }
