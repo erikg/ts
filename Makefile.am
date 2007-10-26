@@ -1,5 +1,5 @@
 
-# $Id: Makefile.am,v 1.14 2005/03/18 16:52:50 erik Exp $
+# $Id: Makefile.am,v 1.15 2007/10/26 04:53:43 erik Exp $
 
 bin_PROGRAMS=ts
 ts_SOURCES = help.c opt.c stamp.c ts.c
@@ -30,6 +30,8 @@ lint:
 	make lint
 indent:
 	gindent $(SOURCES) $(HEADERS)
+flawfinder:
+	flawfinder $(SOURCES) $(HEADERS)
 
 docs:
 	doxygen doxygen.conf
