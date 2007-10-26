@@ -31,11 +31,11 @@
  \***************************************************************************/
 
 /*
- * $Id: stamp.c,v 1.5 2007/10/26 05:58:01 erik Exp $
+ * $Id: stamp.c,v 1.6 2007/10/26 06:04:18 erik Exp $
  */
 
 #ifndef lint
-static const char rcsid[] = "$Id: stamp.c,v 1.5 2007/10/26 05:58:01 erik Exp $";
+static const char rcsid[] = "$Id: stamp.c,v 1.6 2007/10/26 06:04:18 erik Exp $";
 #endif
 
 #include <stdio.h>
@@ -74,9 +74,11 @@ stamp (char *format)
 		    exit(EXIT_FAILURE);
 		}
 		lt = *localtime (&tval);
-		strftime (buf, sizeof (buf), format, &lt);
-		stamplen = strlen (buf);
-		write (STDOUT_FILENO, buf, stamplen);
+		stamplen = strftime (buf, sizeof (buf), format, &lt);
+		if( write (STDOUT_FILENO, buf, stamplen) != stamplen ) {
+		    perror("write");
+		    exit(EXIT_FAILURE);
+		}
 		a = 1;
 	}
 
