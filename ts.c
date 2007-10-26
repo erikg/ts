@@ -28,12 +28,12 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF  *
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.         *
  *                                                                           *
- * $Id: ts.c,v 1.12 2007/10/26 04:48:29 erik Exp $
+ * $Id: ts.c,v 1.13 2007/10/26 05:03:12 erik Exp $
  *                                                                           *
  \***************************************************************************/
 
 #ifndef lint
-static const char rcsid[] = "$Id: ts.c,v 1.12 2007/10/26 04:48:29 erik Exp $";
+static const char rcsid[] = "$Id: ts.c,v 1.13 2007/10/26 05:03:12 erik Exp $";
 #endif
 
 #include <stdio.h>
@@ -54,8 +54,15 @@ main (int argc, char **argv)
     char *format;
 
     format = parse_opts (argc, argv);
+
+    if (format == NULL) {
+	fprintf(stderr, "Unable to parse format\n");
+	return EXIT_FAILURE;
+    }
+
     if(stamp (format) > 0) {
 	fprintf(stderr,"Error timestamping\n");
+	free(format);
 	return EXIT_FAILURE;
     }
 
