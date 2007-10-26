@@ -28,12 +28,12 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF  *
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.         *
  *                                                                           *
- * $Id: ts.c,v 1.15 2007/10/26 06:03:51 erik Exp $
+ * $Id: ts.c,v 1.16 2007/10/26 06:16:01 erik Exp $
  *                                                                           *
  \***************************************************************************/
 
 #ifndef lint
-/*@unused@*/static const char rcsid[] = "$Id: ts.c,v 1.15 2007/10/26 06:03:51 erik Exp $";
+/*@unused@*/static const char rcsid[] = "$Id: ts.c,v 1.16 2007/10/26 06:16:01 erik Exp $";
 #endif
 
 #include <stdio.h>
@@ -51,9 +51,7 @@
 int
 main (int argc, char **argv)
 {
-    char *format;
-
-    format = parse_opts (argc, argv);
+    const char *format = parse_opts (argc, argv);
 
     if (format == NULL) {
 	fprintf(stderr, "Unable to parse format\n");
