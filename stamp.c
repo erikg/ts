@@ -31,11 +31,11 @@
  \***************************************************************************/
 
 /*
- * $Id: stamp.c,v 1.6 2007/10/26 06:04:18 erik Exp $
+ * $Id: stamp.c,v 1.7 2007/10/26 06:09:47 erik Exp $
  */
 
 #ifndef lint
-static const char rcsid[] = "$Id: stamp.c,v 1.6 2007/10/26 06:04:18 erik Exp $";
+/*@unused@*/static const char rcsid[] = "$Id: stamp.c,v 1.7 2007/10/26 06:09:47 erik Exp $";
 #endif
 
 #include <stdio.h>
@@ -63,7 +63,7 @@ stamp (char *format)
 
     while (read (STDIN_FILENO, &c, 1) == 1)
       {
-	  static int stamplen = 0;
+	  size_t stamplen = 0;
 
 	  if (a == '\0')
 	    {
@@ -75,11 +75,11 @@ stamp (char *format)
 		}
 		lt = *localtime (&tval);
 		stamplen = strftime (buf, sizeof (buf), format, &lt);
-		if( write (STDOUT_FILENO, buf, stamplen) != stamplen ) {
+		if( (size_t)write (STDOUT_FILENO, buf, stamplen) != stamplen ) {
 		    perror("write");
 		    exit(EXIT_FAILURE);
 		}
-		a = 1;
+		++a;
 	}
 
 	  if( write (STDOUT_FILENO, &c, 1) != 1 ) {
@@ -90,10 +90,10 @@ stamp (char *format)
 	  switch (c)
 	    {
 	    case '\n':
-		a = 0;
+		a = '\0';
 		break;
 	    case '\r':
-		if( write (STDOUT_FILENO, buf, stamplen) != stamplen ) {
+		if( (size_t)write (STDOUT_FILENO, (const void *)buf, stamplen) != stamplen ) {
 		  perror("write");
 		  exit(EXIT_FAILURE);
 		}
