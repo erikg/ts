@@ -31,13 +31,8 @@
  \***************************************************************************/
 
 /*
- * $Id: stamp.c,v 1.10 2007/10/26 21:05:38 erik Exp $
+ * $Id: stamp.c,v 1.11 2007/10/26 21:29:42 erik Exp $
  */
-
-#ifndef lint
-/*@unused@*/ static const char rcsid[] =
-    "$Id: stamp.c,v 1.10 2007/10/26 21:05:38 erik Exp $";
-#endif
 
 #include <stdio.h>
 #include <stdlib.h>

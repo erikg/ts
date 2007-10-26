@@ -31,13 +31,11 @@
  \***************************************************************************/
 
 /*
- * $Id: help.c,v 1.7 2007/10/26 21:04:20 erik Exp $
+ * $Id: help.c,v 1.8 2007/10/26 21:29:42 erik Exp $
  */
 
 static char const copyright[] =
     "Copyright (c) 2003-2007 Erik Greenwald <erik@smluc.org>.  All rights reserved.\n";
-/*@unused@*/ static const char rcsid[] =
-    "$Id: help.c,v 1.7 2007/10/26 21:04:20 erik Exp $";
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -28,14 +28,9 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF  *
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.         *
  *                                                                           *
- * $Id: ts.c,v 1.18 2007/10/26 21:03:48 erik Exp $
+ * $Id: ts.c,v 1.19 2007/10/26 21:29:42 erik Exp $
  *                                                                           *
  \***************************************************************************/
-
-#ifndef lint
-/*@unused@*/ static const char rcsid[] =
-    "$Id: ts.c,v 1.18 2007/10/26 21:03:48 erik Exp $";
-#endif
 
 #include <stdio.h>
 #include <stdlib.h>
