@@ -1,5 +1,5 @@
 
-# $Id: Makefile.am,v 1.16 2007/10/26 05:03:29 erik Exp $
+# $Id: Makefile.am,v 1.17 2007/10/26 05:07:38 erik Exp $
 
 bin_PROGRAMS=ts
 ts_SOURCES = help.c opt.c stamp.c ts.c
@@ -26,7 +26,9 @@ deb:
 packages: rpm
 
 lint:
-	-for file in $(SOURCES) $(HEADERS) ; do splint $(CPPFLAGS) $$file > $$file.lint ; done
+	-for file in $(SOURCES) $(HEADERS) ; do splint $(CPPFLAGS) $$file > $$file.lint && \
+		if [ ! -s $$file.lint ] ; then rm $$file.lint ; fi ; done
+	ls -l *.lint
 indent:
 	gindent $(SOURCES) $(HEADERS)
 flawfinder:
