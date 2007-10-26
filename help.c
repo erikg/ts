@@ -31,7 +31,7 @@
  \***************************************************************************/
 
 /*
- * $Id: help.c,v 1.9 2007/10/26 22:02:44 erik Exp $
+ * $Id: help.c,v 1.10 2007/10/26 23:29:06 erik Exp $
  */
 
 static char const copyright[] =
@@ -53,11 +53,8 @@ static char const copyright[] =
 void
 version(FILE * f, char *name)
 {
-	int retval;
-
-	retval =
-	    fprintf(f, "%s (" PACKAGE ") " VERSION " %s\n", name, copyright);
-	if (retval < 0)
+	if (fprintf(f, "%s (" PACKAGE ") " VERSION " %s\n", name,
+		copyright) < 0)
 		exit(EXIT_FAILURE);
 	return;
 }
@@ -70,12 +67,9 @@ version(FILE * f, char *name)
 void
 usage(FILE * f, char *name)
 {
-	int retval;
-
 	version(f, name);
-	retval =
-	    fprintf(f, "Usage:\n\t%s [-u] [-v|-h] [+val[ymwdHMS]]\n", name);
-	if (retval < 0)
+	if (fprintf(f, "Usage:\n\t%s [-u] [-v|-h] [+val[ymwdHMS]]\n",
+		name) < 0)
 		exit(EXIT_FAILURE);
 	return;
 }
