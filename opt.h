@@ -31,12 +31,12 @@
  \***************************************************************************/
 
 /*
- * $Id: opt.h,v 1.3 2007/10/26 04:48:29 erik Exp $
+ * $Id: opt.h,v 1.4 2007/10/26 06:16:23 erik Exp $
  */
 
 #ifndef TS_OPT_H
 #define TS_OPT_H
 
-char *parse_opts (int argc, char **argv);
+const char *parse_opts (int argc, char **argv);
 
 #endif

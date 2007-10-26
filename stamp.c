@@ -31,11 +31,11 @@
  \***************************************************************************/
 
 /*
- * $Id: stamp.c,v 1.7 2007/10/26 06:09:47 erik Exp $
+ * $Id: stamp.c,v 1.8 2007/10/26 06:16:23 erik Exp $
  */
 
 #ifndef lint
-/*@unused@*/static const char rcsid[] = "$Id: stamp.c,v 1.7 2007/10/26 06:09:47 erik Exp $";
+/*@unused@*/static const char rcsid[] = "$Id: stamp.c,v 1.8 2007/10/26 06:16:23 erik Exp $";
 #endif
 
 #include <stdio.h>
@@ -54,7 +54,7 @@
  * @return Always 0.
  */
 int
-stamp (char *format)
+stamp (const char *format)
 {
     char buf[BUFSIZ];
     char c = '\0', a = '\0';
