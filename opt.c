@@ -31,7 +31,7 @@
  \***************************************************************************/
 
 /*
- * $Id: opt.c,v 1.10 2007/10/26 21:04:38 erik Exp $
+ * $Id: opt.c,v 1.11 2007/10/26 22:02:54 erik Exp $
  */
 
 #ifdef HAVE_CONFIG_H
@@ -85,5 +85,5 @@ parse_opts(int argc, char **argv)
 	argv += optind;
 
 	return strdup(*argv != NULL
-	    && **argv == '+' ? (char *)(*argv + 1) : default_format);
+	    && **argv == '+' ? (const char *)(*argv + 1) : default_format);
 }
