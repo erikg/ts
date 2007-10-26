@@ -31,11 +31,11 @@
  \***************************************************************************/
 
 /*
- * $Id: opt.c,v 1.3 2007/10/26 04:48:29 erik Exp $
+ * $Id: opt.c,v 1.4 2007/10/26 06:04:54 erik Exp $
  */
 
 #ifndef lint
-static const char rcsid[] = "$Id: opt.c,v 1.3 2007/10/26 04:48:29 erik Exp $";
+static const char rcsid[] = "$Id: opt.c,v 1.4 2007/10/26 06:04:54 erik Exp $";
 #endif
 
 #ifdef HAVE_CONFIG_H
@@ -51,6 +51,7 @@ static const char rcsid[] = "$Id: opt.c,v 1.3 2007/10/26 04:48:29 erik Exp $";
 
 #include "help.h"
 
+char default_format[] = "%Y%m%d%H%M%S: ";
 /**
  * Parse the command line parameters.
  * @param argc Number of arguments.
@@ -63,7 +64,7 @@ parse_opts (int argc, char **argv)
     char *format;
     int ch = 0;
 
-    format = "%Y%m%d%H%M%S: ";
+    format = default_format;
     while ((ch = getopt (argc, argv, "uvh")) != -1)
 	switch (ch)
 	  {
@@ -90,10 +91,7 @@ parse_opts (int argc, char **argv)
     argc -= optind;
     argv += optind;
 
-    if (*argv && **argv == '+')
-      {
-	  format = *argv + 1;
-	  ++argv;
-      }
+    if (*argv != NULL && **argv == '+')
+	  format = *++argv;
     return format;
 }
