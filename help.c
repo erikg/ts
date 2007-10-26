@@ -31,15 +31,19 @@
  \***************************************************************************/
 
 /*
- * $Id: help.c,v 1.8 2007/10/26 21:29:42 erik Exp $
+ * $Id: help.c,v 1.9 2007/10/26 22:02:44 erik Exp $
  */
 
 static char const copyright[] =
     "Copyright (c) 2003-2007 Erik Greenwald <erik@smluc.org>.  All rights reserved.\n";
 
+
+#ifdef HAVE_CONFIG_H
+# include "config.h"
+#endif
+
 #include <stdio.h>
 #include <stdlib.h>
-#include "config.h"
 
 /**
  * Display the version of this program.
