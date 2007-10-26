@@ -28,12 +28,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF  *
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.         *
  *                                                                           *
- * $Id: ts.c,v 1.17 2007/10/26 18:35:23 erik Exp $
+ * $Id: ts.c,v 1.18 2007/10/26 21:03:48 erik Exp $
  *                                                                           *
  \***************************************************************************/
 
 #ifndef lint
-/*@unused@*/static const char rcsid[] = "$Id: ts.c,v 1.17 2007/10/26 18:35:23 erik Exp $";
+/*@unused@*/ static const char rcsid[] =
+    "$Id: ts.c,v 1.18 2007/10/26 21:03:48 erik Exp $";
 #endif
 
 #include <stdio.h>
@@ -49,22 +50,22 @@
  * @return Exit status.
  */
 int
-main (int argc, char **argv)
+main(int argc, char **argv)
 {
-    const char *format = parse_opts (argc, argv);
+	const char *format = parse_opts(argc, argv);
 
-    if (format == NULL) {
-	fprintf(stderr, "Unable to parse format\n");
-	return EXIT_FAILURE;
-    }
+	if (format == NULL) {
+		fprintf(stderr, "Unable to parse format\n");
+		return EXIT_FAILURE;
+	}
 
-    if(stamp (format) > 0) {
-	fprintf(stderr,"Error timestamping\n");
-	free ((void *)format);
-	return EXIT_FAILURE;
-    }
+	if (stamp(format) > 0) {
+		fprintf(stderr, "Error timestamping\n");
+		free((void *)format);
+		return EXIT_FAILURE;
+	}
 
-    free ((void *)format);
+	free((void *)format);
 
-    return EXIT_SUCCESS;
+	return EXIT_SUCCESS;
 }

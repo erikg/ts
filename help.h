@@ -31,15 +31,15 @@
  \***************************************************************************/
 
 /*
- * $Id: help.h,v 1.3 2007/10/26 04:48:29 erik Exp $
+ * $Id: help.h,v 1.4 2007/10/26 21:03:17 erik Exp $
  */
 
 #ifndef TS_HELP_H
 #define TS_HELP_H
 
-#include <stdio.h>	/* for FILE */
+#include <stdio.h>		/* for FILE */
 
-void version (FILE * f, char *name);
-void usage (FILE * f, char *name);
+void version(FILE * f, char *name);
+void usage(FILE * f, char *name);
 
 #endif

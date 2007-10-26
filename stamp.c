@@ -31,11 +31,12 @@
  \***************************************************************************/
 
 /*
- * $Id: stamp.c,v 1.9 2007/10/26 06:27:55 erik Exp $
+ * $Id: stamp.c,v 1.10 2007/10/26 21:05:38 erik Exp $
  */
 
 #ifndef lint
-/*@unused@*/static const char rcsid[] = "$Id: stamp.c,v 1.9 2007/10/26 06:27:55 erik Exp $";
+/*@unused@*/ static const char rcsid[] =
+    "$Id: stamp.c,v 1.10 2007/10/26 21:05:38 erik Exp $";
 #endif
 
 #include <stdio.h>
@@ -53,53 +54,52 @@
  * @return Always 0.
  */
 int
-stamp (const char *format)
+stamp(const char *format)
 {
-    char buf[BUFSIZ];
-    char c = '\0', a = '\0';
-    struct tm lt;
-    time_t tval;
+	char buf[BUFSIZ];
+	char c = '\0', a = '\0';
+	struct tm lt;
+	time_t tval;
 
-    while (read (STDIN_FILENO, &c, 1) == 1)
-      {
-	  size_t stamplen = 0;
+	while (read(STDIN_FILENO, &c, 1) == 1) {
+		size_t stamplen = 0;
 
-	  if (a == '\0')
-	    {
-		if (c == '\r')
-		    continue;
-		if(time (&tval) == 0) {
-		    perror("Unable to get time");
-		    exit(EXIT_FAILURE);
+		if (a == '\0') {
+			if (c == '\r')
+				continue;
+			if (time(&tval) == 0) {
+				perror("Unable to get time");
+				exit(EXIT_FAILURE);
+			}
+			lt = *localtime(&tval);
+			stamplen = strftime(buf, sizeof(buf), format, &lt);
+			if ((size_t) write(STDOUT_FILENO, buf,
+				stamplen) != stamplen) {
+				perror("write");
+				exit(EXIT_FAILURE);
+			}
+			++a;
 		}
-		lt = *localtime (&tval);
-		stamplen = strftime (buf, sizeof (buf), format, &lt);
-		if( (size_t)write (STDOUT_FILENO, buf, stamplen) != stamplen ) {
-		    perror("write");
-		    exit(EXIT_FAILURE);
+
+		if (write(STDOUT_FILENO, &c, 1) != 1) {
+			perror("write");
+			exit(EXIT_FAILURE);
 		}
-		++a;
+
+		switch (c) {
+		case '\n':
+			a = '\0';
+			break;
+		case '\r':
+			if ((size_t) write(STDOUT_FILENO, (const void *)buf,
+				stamplen) != stamplen) {
+				perror("write");
+				exit(EXIT_FAILURE);
+			}
+			break;
+		default:
+			break;
+		}
 	}
-
-	  if( write (STDOUT_FILENO, &c, 1) != 1 ) {
-	      perror("write");
-	      exit(EXIT_FAILURE);
-	  }
-
-	  switch (c)
-	    {
-	    case '\n':
-		a = '\0';
-		break;
-	    case '\r':
-		if( (size_t)write (STDOUT_FILENO, (const void *)buf, stamplen) != stamplen ) {
-		  perror("write");
-		  exit(EXIT_FAILURE);
-		}
-		break;
-	    default:
-		break;
-	    }
-      }
-    return 0;
+	return 0;
 }

@@ -31,12 +31,13 @@
  \***************************************************************************/
 
 /*
- * $Id: help.c,v 1.6 2007/10/26 05:03:43 erik Exp $
+ * $Id: help.c,v 1.7 2007/10/26 21:04:20 erik Exp $
  */
 
 static char const copyright[] =
     "Copyright (c) 2003-2007 Erik Greenwald <erik@smluc.org>.  All rights reserved.\n";
-/*@unused@*/ static const char rcsid[] = "$Id: help.c,v 1.6 2007/10/26 05:03:43 erik Exp $";
+/*@unused@*/ static const char rcsid[] =
+    "$Id: help.c,v 1.7 2007/10/26 21:04:20 erik Exp $";
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -48,17 +49,15 @@ static char const copyright[] =
  * @param name Called name of the program.
  */
 void
-version (FILE * f, char *name)
+version(FILE * f, char *name)
 {
-    int retval;
+	int retval;
 
-    retval =
-	fprintf (f,
-		 "%s (" PACKAGE ") " VERSION " %s\n",
-		 name, copyright);
-    if (retval < 0)
-	exit (EXIT_FAILURE);
-    return;
+	retval =
+	    fprintf(f, "%s (" PACKAGE ") " VERSION " %s\n", name, copyright);
+	if (retval < 0)
+		exit(EXIT_FAILURE);
+	return;
 }
 
 /**
@@ -67,13 +66,14 @@ version (FILE * f, char *name)
  * @param name Called name of the program.
  */
 void
-usage (FILE * f, char *name)
+usage(FILE * f, char *name)
 {
-    int retval;
+	int retval;
 
-    version (f, name);
-    retval = fprintf (f, "Usage:\n\t%s [-u] [-v|-h] [+val[ymwdHMS]]\n", name);
-    if (retval < 0)
-	exit (EXIT_FAILURE);
-    return;
+	version(f, name);
+	retval =
+	    fprintf(f, "Usage:\n\t%s [-u] [-v|-h] [+val[ymwdHMS]]\n", name);
+	if (retval < 0)
+		exit(EXIT_FAILURE);
+	return;
 }

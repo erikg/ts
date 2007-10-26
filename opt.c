@@ -31,16 +31,16 @@
  \***************************************************************************/
 
 /*
- * $Id: opt.c,v 1.9 2007/10/26 21:00:25 erik Exp $
+ * $Id: opt.c,v 1.10 2007/10/26 21:04:38 erik Exp $
  */
 
 #ifdef HAVE_CONFIG_H
 # include "config.h"
 #endif
 
-#include <stdlib.h> /* setenv, putenv, exit */
-#include <string.h> /* strdup */
-#include <unistd.h> /* getopt */
+#include <stdlib.h>		/* setenv, putenv, exit */
+#include <string.h>		/* strdup */
+#include <unistd.h>		/* getopt */
 
 #include "help.h"
 
@@ -53,36 +53,37 @@ static char default_format[] = "%Y%m%d%H%M%S: ";
  * @return The date format.
  */
 const char *
-parse_opts (int argc, char **argv)
+parse_opts(int argc, char **argv)
 {
-    int ch = 0;
+	int ch = 0;
 
-    while ((ch = getopt (argc, argv, "uvh")) != -1)
-	switch (ch)
-	  {
-	  case 'u':
+	while ((ch = getopt(argc, argv, "uvh")) != -1)
+		switch (ch) {
+		case 'u':
 #if defined(HAVE_SETENV)
-	      setenv ("TZ", "UTC0", 1);
-	      break;
+			setenv("TZ", "UTC0", 1);
+			break;
 #elif defined(HAVE_PUTENV)
-	      putenv ("TZ=UTC");
-	      break;
+			putenv("TZ=UTC");
+			break;
 #else
-	      printf ("No support for setting env TZ=UTC. Aborting\n");
-	      exit (EXIT_FAILURE);
+			printf
+			    ("No support for setting env TZ=UTC. Aborting\n");
+			exit(EXIT_FAILURE);
 #endif
-	  case 'h':
-	      usage (stdout, argv[0]);
-	      exit (EXIT_SUCCESS);
-	  case 'v':
-	      version (stdout, argv[0]);
-	      exit (EXIT_SUCCESS);
-	  default:
-	      usage (stderr, argv[0]);
-	      exit (EXIT_FAILURE);
-	  }
-    argc -= optind;
-    argv += optind;
+		case 'h':
+			usage(stdout, argv[0]);
+			exit(EXIT_SUCCESS);
+		case 'v':
+			version(stdout, argv[0]);
+			exit(EXIT_SUCCESS);
+		default:
+			usage(stderr, argv[0]);
+			exit(EXIT_FAILURE);
+		}
+	argc -= optind;
+	argv += optind;
 
-    return strdup( *argv != NULL && **argv == '+' ? (char *)(*argv + 1) : default_format );
+	return strdup(*argv != NULL
+	    && **argv == '+' ? (char *)(*argv + 1) : default_format);
 }

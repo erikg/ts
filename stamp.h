@@ -31,12 +31,12 @@
  \***************************************************************************/
 
 /*
- * $Id: stamp.h,v 1.4 2007/10/26 06:16:23 erik Exp $
+ * $Id: stamp.h,v 1.5 2007/10/26 21:03:17 erik Exp $
  */
 
 #ifndef TS_STAMP_H
 #define TS_STAMP_H
 
-int stamp (const char *format);
+int stamp(const char *format);
 
 #endif
