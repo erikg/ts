@@ -31,7 +31,7 @@
  \***************************************************************************/
 
 /*
- * $Id: help.c,v 1.10 2007/10/26 23:29:06 erik Exp $
+ * $Id: help.c,v 1.11 2007/10/26 23:51:40 erik Exp $
  */
 
 static char const copyright[] =
@@ -44,6 +44,8 @@ static char const copyright[] =
 
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "help.h"
 
 /**
  * Display the version of this program.

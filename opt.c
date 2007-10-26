@@ -31,7 +31,7 @@
  \***************************************************************************/
 
 /*
- * $Id: opt.c,v 1.11 2007/10/26 22:02:54 erik Exp $
+ * $Id: opt.c,v 1.12 2007/10/26 23:51:40 erik Exp $
  */
 
 #ifdef HAVE_CONFIG_H
@@ -43,6 +43,7 @@
 #include <unistd.h>		/* getopt */
 
 #include "help.h"
+#include "opt.h"
 
 static char default_format[] = "%Y%m%d%H%M%S: ";
 
