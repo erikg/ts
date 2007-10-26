@@ -31,11 +31,11 @@
  \***************************************************************************/
 
 /*
- * $Id: opt.c,v 1.7 2007/10/26 18:31:42 erik Exp $
+ * $Id: opt.c,v 1.8 2007/10/26 18:35:23 erik Exp $
  */
 
 #ifndef lint
-/*@unused@*/static const char rcsid[] = "$Id: opt.c,v 1.7 2007/10/26 18:31:42 erik Exp $";
+/*@unused@*/static const char rcsid[] = "$Id: opt.c,v 1.8 2007/10/26 18:35:23 erik Exp $";
 #endif
 
 #ifdef HAVE_CONFIG_H
@@ -91,7 +91,7 @@ parse_opts (int argc, char **argv)
     argv += optind;
 
     if (*argv != NULL && **argv == '+')
-	return (const char *)(*argv + 1);
+	return strdup((char *)(*argv + 1));
 
-    return default_format;
+    return strdup(default_format);
 }
