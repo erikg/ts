@@ -31,11 +31,11 @@
  \***************************************************************************/
 
 /*
- * $Id: stamp.c,v 1.8 2007/10/26 06:16:23 erik Exp $
+ * $Id: stamp.c,v 1.9 2007/10/26 06:27:55 erik Exp $
  */
 
 #ifndef lint
-/*@unused@*/static const char rcsid[] = "$Id: stamp.c,v 1.8 2007/10/26 06:16:23 erik Exp $";
+/*@unused@*/static const char rcsid[] = "$Id: stamp.c,v 1.9 2007/10/26 06:27:55 erik Exp $";
 #endif
 
 #include <stdio.h>
@@ -43,7 +43,6 @@
 #include <string.h>
 #include <unistd.h>
 #include <time.h>
-#include <sys/time.h>
 
 #include "config.h"
 

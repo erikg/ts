@@ -31,11 +31,11 @@
  \***************************************************************************/
 
 /*
- * $Id: opt.c,v 1.5 2007/10/26 06:16:58 erik Exp $
+ * $Id: opt.c,v 1.6 2007/10/26 06:27:55 erik Exp $
  */
 
 #ifndef lint
-/*@unused@*/static const char rcsid[] = "$Id: opt.c,v 1.5 2007/10/26 06:16:58 erik Exp $";
+/*@unused@*/static const char rcsid[] = "$Id: opt.c,v 1.6 2007/10/26 06:27:55 erik Exp $";
 #endif
 
 #ifdef HAVE_CONFIG_H
@@ -47,7 +47,6 @@
 #include <string.h>
 #include <unistd.h>
 #include <time.h>
-#include <sys/time.h>
 
 #include "help.h"
 
