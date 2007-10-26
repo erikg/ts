@@ -2,7 +2,7 @@
 /****************************************************************************\
  * timestamp - time stamp pipe                                               *
  *                                                                           *
- * Copyright (C) 2003-2005 Erik Greenwald <erik@smluc.org>                   *
+ * Copyright (C) 2003-2007 Erik Greenwald <erik@smluc.org>                   *
  * All Rights Reserved.                                                      *
  *                                                                           *
  * Redistribution and use in source and binary forms, with or without        *
@@ -31,12 +31,12 @@
  \***************************************************************************/
 
 /*
- * $Id: help.c,v 1.4 2007/09/06 13:59:17 erik Exp $
+ * $Id: help.c,v 1.5 2007/10/26 04:48:29 erik Exp $
  */
 
 static char const copyright[] =
-    "Copyright (c) 2003-2005 Erik Greenwald <erik@smluc.org>.  All rights reserved.\n";
-static const char rcsid[] = "$Id: help.c,v 1.4 2007/09/06 13:59:17 erik Exp $";
+    "Copyright (c) 2003-2007 Erik Greenwald <erik@smluc.org>.  All rights reserved.\n";
+static const char rcsid[] = "$Id: help.c,v 1.5 2007/10/26 04:48:29 erik Exp $";
 
 #include <stdio.h>
 #include <stdlib.h>

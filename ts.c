@@ -2,7 +2,8 @@
 /****************************************************************************\
  * timestamp - time stamp pipe                                               *
  *                                                                           *
- * Copyright (C) 2003 Erik Greenwald <erik@smluc.org> All Rights Reserved.   *
+ * Copyright (C) 2003-2007 Erik Greenwald <erik@smluc.org> All Rights        *
+ * Reserved.                                                                 *
  *                                                                           *
  * Redistribution and use in source and binary forms, with or without        *
  * modification, are permitted provided that the following conditions are    *
@@ -27,12 +28,12 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF  *
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.         *
  *                                                                           *
- * $Id: ts.c,v 1.11 2007/09/04 22:41:12 erik Exp $
+ * $Id: ts.c,v 1.12 2007/10/26 04:48:29 erik Exp $
  *                                                                           *
  \***************************************************************************/
 
 #ifndef lint
-static const char rcsid[] = "$Id: ts.c,v 1.11 2007/09/04 22:41:12 erik Exp $";
+static const char rcsid[] = "$Id: ts.c,v 1.12 2007/10/26 04:48:29 erik Exp $";
 #endif
 
 #include <stdio.h>
