@@ -2,7 +2,7 @@
 /****************************************************************************\
  * timestamp - time stamp pipe                                               *
  *                                                                           *
- * Copyright (C) 2003-2007 Erik Greenwald <erik@smluc.org>                   *
+ * Copyright (C) 2003-2008 Erik Greenwald <erik@smluc.org>                   *
  * All Rights Reserved.                                                      *
  *                                                                           *
  * Redistribution and use in source and binary forms, with or without        *
@@ -31,11 +31,11 @@
  \***************************************************************************/
 
 /*
- * $Id: help.c,v 1.11 2007/10/26 23:51:40 erik Exp $
+ * $Id: help.c,v 1.12 2008/02/01 20:11:46 erik Exp $
  */
 
 static char const copyright[] =
-    "Copyright (c) 2003-2007 Erik Greenwald <erik@smluc.org>.  All rights reserved.\n";
+    "Copyright (c) 2003-2008 Erik Greenwald <erik@smluc.org>.  All rights reserved.\n";
 
 
 #ifdef HAVE_CONFIG_H
