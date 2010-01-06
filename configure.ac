@@ -1,7 +1,7 @@
 # *****************************************************************************
 # * timestamp - time stamp pipe                                               *
 # *                                                                           *
-# * Copyright (C) 2003-2008 Erik Greenwald <erik@smluc.org>                   *
+# * Copyright (C) 2003-2010 Erik Greenwald <erik@smluc.org>                   *
 # * All Rights Reserved.                                                      *
 # *                                                                           *
 # * Redistribution and use in source and binary forms, with or without        *
@@ -29,7 +29,7 @@
 # *                                                                           *
 # \***************************************************************************/
 #
-# $Id: configure.ac,v 1.5 2008/02/01 20:11:46 erik Exp $
+# $Id: configure.ac,v 1.6 2010/01/06 01:06:55 erik Exp $
 
 AC_INIT(ts.c)
 AC_CONFIG_HEADERS(config.h)

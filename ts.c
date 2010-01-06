@@ -2,7 +2,7 @@
 /****************************************************************************\
  * timestamp - time stamp pipe                                               *
  *                                                                           *
- * Copyright (C) 2003-2008 Erik Greenwald <erik@smluc.org> All Rights        *
+ * Copyright (C) 2003-2010 Erik Greenwald <erik@smluc.org> All Rights        *
  * Reserved.                                                                 *
  *                                                                           *
  * Redistribution and use in source and binary forms, with or without        *
@@ -28,7 +28,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF  *
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.         *
  *                                                                           *
- * $Id: ts.c,v 1.21 2008/02/01 20:11:46 erik Exp $
+ * $Id: ts.c,v 1.22 2010/01/06 01:06:55 erik Exp $
  *                                                                           *
  \***************************************************************************/
 

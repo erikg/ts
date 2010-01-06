@@ -1,7 +1,7 @@
 # *****************************************************************************
 # * timestamp - time stamp pipe                                               *
 # *                                                                           *
-# * Copyright (C) 2003-2008 Erik Greenwald <erik@smluc.org>                   *
+# * Copyright (C) 2003-2010 Erik Greenwald <erik@smluc.org>                   *
 # * All Rights Reserved.                                                      *
 # *                                                                           *
 # * Redistribution and use in source and binary forms, with or without        *
@@ -29,7 +29,7 @@
 # *                                                                           *
 # \***************************************************************************/
 #
-# $Id: Makefile.am,v 1.21 2008/02/01 20:11:46 erik Exp $
+# $Id: Makefile.am,v 1.22 2010/01/06 01:06:55 erik Exp $
 
 bin_PROGRAMS=ts
 ts_SOURCES = help.c opt.c stamp.c ts.c

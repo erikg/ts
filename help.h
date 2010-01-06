@@ -2,7 +2,7 @@
 /****************************************************************************\
  * timestamp - time stamp pipe                                               *
  *                                                                           *
- * Copyright (C) 2003-2008 Erik Greenwald <erik@smluc.org>                   *
+ * Copyright (C) 2003-2010 Erik Greenwald <erik@smluc.org>                   *
  * All Rights Reserved.                                                      *
  *                                                                           *
  * Redistribution and use in source and binary forms, with or without        *
@@ -31,7 +31,7 @@
  \***************************************************************************/
 
 /*
- * $Id: help.h,v 1.5 2008/02/01 20:11:46 erik Exp $
+ * $Id: help.h,v 1.6 2010/01/06 01:06:55 erik Exp $
  */
 
 #ifndef TS_HELP_H
